@@ -19,14 +19,15 @@ We plan to approach solving this problem using 3 main ML pipelines...
    - Lbl2Vec: This model deciphers the vector embeddings’ meaning by associating them with labels.
 
 3. Non-Negative Matrix Clustering Pipeline:
-   - Document Term Matrix (DTM): Documents are transformed into a DTM wherein each row represents an email and columns correspond to words. 
-   - Non-Negative Matrix Clustering: This algorithm factors the DTM into non-negative matrices of 'k' different topics giving us a way to find the given topic of the email.
+   - BERT: A pre-trained neural model, BERT captures contextual relationships bi-directionally within texts. By employing it, we intend to vectorize the email content.
+   - Document Term Matrix (DTM): Post BERT usage, the resultant vector embeddings are transformed into a DTM wherein each row represents an email and columns correspond to words. Dimensionality reduction might be employed here.
+   - Non-Negative Matrix Clustering: This algorithm's application facilitates clustering of the emails in the DTM by discernible topics.
 
 ## Dataset
 As we’ll need an extensive training data set of emails to facilitate the above methods, we plan to use the Enron dataset, which contains emails of about 150 users and has been compiled with 500,000 messages. This dataset contains information about sender, receiver, timestamp when it was send, subject lines and the actual body of text. We plan to mainly use the subject lines and body from the emails.
 
 ## Potenial Results and Discussion
-As this is an unsupervised tasks the metrics we use will be especially important in order to get clear and coherent clusters that accurately model the topic. The metrics we plan to use are related to topic coherence. To give a brief intuition behind the metric, our general goal is to maxmize the similarity between documents/elements in a given cluster and maximize the difference of similarity between documents/elements of different clusters. This can be done quite easily using the topic coherence metrics based around UMass’ formulation and Word2Vec usage.
+We intend to employ topic coherence metrics built around Word2Vec, which give a coherence score to a set of reference topics based on how well they align with an a clustered body of text, producing a probabilistic score for how well the topics align with emails in each cluster. The Calinski-Harabasz Index to determine how different Word2Vec embeddings for each topic name are to the average Word2Vec embeddings of all other cluster’s emails and produce a ratio of intra-cluster and inter-cluster variations based on topic names as a measure of the accuracy of our final labels. Finally, will use the Davies-Bouldin Index to determine the average cosine similarity of a cluster to its topic name and that of the second-closest cluster with that topic name to produce a ratio representing how differentiating the topic name is from the nearest neighboring cluster.
 
 [Gantt and Contribution Chart](https://docs.google.com/spreadsheets/d/1ZUl8Xywp4VTTNtC-8Wq8ZxpYnzXYNJLe/edit?usp=sharing&ouid=101698207149759013919&rtpof=true&sd=true)
 ---
