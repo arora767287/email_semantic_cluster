@@ -29,14 +29,17 @@ As we’ll need an extensive training data set of emails to facilitate the above
 ## Potenial Results and Discussion
 We intend to employ topic coherence metrics built around Word2Vec, which give a coherence score to a set of reference topics based on how well they align with an a clustered body of text, producing a probabilistic score for how well the topics align with emails in each cluster. The Calinski-Harabasz Index to determine how different Word2Vec embeddings for each topic name are to the average Word2Vec embeddings of all other cluster’s emails and produce a ratio of intra-cluster and inter-cluster variations based on topic names as a measure of the accuracy of our final labels. Finally, will use the Davies-Bouldin Index to determine the average cosine similarity of a cluster to its topic name and that of the second-closest cluster with that topic name to produce a ratio representing how differentiating the topic name is from the nearest neighboring cluster.
 
+# Checkpoint
+For our checkpoint we 
+
 # Contribution Table For Proposal
 | Member | Job | Description |
 | --- | --- | --- |
 | Katherine | Video | Recording and editing of video |
-| Tanush & Nitya | Slides | Presentation visuals for video |
+| Tanush, Nitya & Katherine | Slides | Presentation visuals for video |
 | Ajay | Introduction & Background | Introduction and background for proposal |
 | Nitya | Problem Description | Description of problem for proposal |
-| Tanush, Ajay & Nitya | Methods | Methods for proposal |
+| Nitya, Tanush & Ajay | Methods | Methods for proposal |
 | Tanush & Nitya | Potential Results and Discussion | Metrics for proposal |
 | All | Literature Review | Review of general methods for topic modeling |
 | All | GitHub Pages | Making and formatting of GitHub pages website |
