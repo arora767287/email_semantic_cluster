@@ -4,7 +4,7 @@
 In the modern age of information about 56.5% of emails sent in 2022 were spam. This presents a problem for the average person since they are made to see and read spam and unimportant emails that they don't personally care about. This detracts attention away from actual important mail. Our goal in this project is to create an email clustering system that accurately clusters emails based on specific topics a user may want to see in their inbox with an eventual hope of using it for filtration as a whole.
 
 ## Problem Definition
-Researchers, students, and professionals all use their emails as a central point of communication. However, because of how universally used emailing is, it often becomes subject to cluttering and a lack of organization with incoming messages of varying importance to receivers. This can lead to a backlog of important messages being obscured by less relevant ones, causing very urgent circumstances and concerns to be unresolved and both incoherence as well as reduced productivity for thousands of individuals—the scale of this problem and ubiquity of email is what makes these consequences even more alarming.
+Emails are a key communication tool for researchers, students, and professionals. Due to its widespread use, email inboxes often become cluttered and disorganized, causing vital messages to be overshadowed by less important ones. This leads to unresolved urgent matters and decreased productivity for many. The pervasive use of email amplifies these challenges.
 
 ## Methods
 We plan to approach solving this problem using 3 main ML pipelines...
