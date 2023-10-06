@@ -1,36 +1,33 @@
 # Topic Modeling with Emails
 
 ## Background
-In the modern age of information about 56.5% of emails sent in 2022 were spam. This presents a problem for the average person since they are made to see and read spam and unimportant emails that they don't personally care about. This detracts attention away from actual important mail. Our goal in this project is to create an email clustering system that accurately clusters emails based on specific topics a user may want to see in their inbox with an eventual hope of using it for filtration as a whole.
+In the modern age of information about 56.5% of emails sent in 2022 were spam. This presents a problem for the average person since this detracts attention away from actual important mail. Our goal in this project is to create an email clustering system that accurately clusters emails based on specific topics a user may want to see in their inbox, using it for inbox filtration in the future.
 
 ## Problem Definition
 Emails are a key communication tool for researchers, students, and professionals. Due to its widespread use, email inboxes often become cluttered and disorganized, causing vital messages to be overshadowed by less important ones. This leads to unresolved urgent matters and decreased productivity for many. The pervasive use of email amplifies these challenges.
 
 ## Methods
 We plan to approach solving this problem using 3 main ML pipelines...
-1. TF-IDF, PCA, and PAM Pipeline:
+1. TF-IDF + PCA + Pachinko Allocation Model (PAM):
    - TF-IDF: It assesses the relevance of frequency of phrases and keywords across documents. By evaluating a phrase's significance across a document corpus, we can pinpoint crucial keywords within emails.
    - PCA: This technique reduces the dimensionality of the keywords extracted via TF-IDF, emphasizing those that yield substantial importance for clustering.
-   - Pachinko Allocation Model (PAM): A hierarchical topic modeling approach for captures correlations between vectorized representations of emails for clustering them into topics.
+   - PAM: A hierarchical topic modeling approach for captures correlations between vectorized representations of emails for clustering them into topics.
 
-2. Doc2Vec and Lbl2Vec Pipeline:
+2. Doc2Vec + Lbl2Vec:
    - Doc2Vec: An extension of word2vec, it allows for capturing the semantic essence of entire documents. Using this, each email is converted into fixed-size vector embeddings.
    - kNN Model: Post vectorization, emails are clustered where centroids represent semantic essence.
    - Lbl2Vec: This model deciphers the vector embeddings’ meaning by associating them with labels.
 
-3. Non-Negative Matrix Clustering Pipeline:
+3. Non-Negative Matrix Factorization (NNMF):
    - BERT: A pre-trained neural model, BERT captures contextual relationships bi-directionally within texts. By employing it, we intend to vectorize the email content.
-   - Document Term Matrix (DTM): Post BERT usage, the resultant vector embeddings are transformed into a DTM wherein each row represents an email and columns correspond to words. Dimensionality reduction might be employed here.
-   - Non-Negative Matrix Clustering: This algorithm's application facilitates clustering of the emails in the DTM by discernible topics.
+   - Document Term Matrix (DTM): The resultant vector embeddings are transformed into a DTM wherein each row represents an email and columns correspond to words.
+   - NNMF: This algorithm's application facilitates clustering of the emails in the DTM by discernible topics.
 
-## Dataset
-As we’ll need an extensive training data set of emails to facilitate the above methods, we plan to use the Enron dataset, which contains emails of about 150 users and has been compiled with 500,000 messages. This dataset contains information about sender, receiver, timestamp when it was send, subject lines and the actual body of text.
+## Dataset (Checkpoint)
+As we’ll need an extensive training dataset of emails to facilitate the above methods, we plan to use the [Enron Dataset](https://www.cs.cmu.edu/~enron/), which contains emails of about 150 users and has been compiled with 500,000 messages. This dataset contains information about sender, receiver, timestamp when it was sent, subject and body of the email.
 
-## Potenial Results and Discussion
-We intend to employ topic coherence metrics built around Word2Vec, which give a coherence score to a set of reference topics based on how well they align with an a clustered body of text, producing a probabilistic score for how well the topics align with emails in each cluster. The Calinski-Harabasz Index to determine how different Word2Vec embeddings for each topic name are to the average Word2Vec embeddings of all other cluster’s emails and produce a ratio of intra-cluster and inter-cluster variations based on topic names as a measure of the accuracy of our final labels. Finally, will use the Davies-Bouldin Index to determine the average cosine similarity of a cluster to its topic name and that of the second-closest cluster with that topic name to produce a ratio representing how differentiating the topic name is from the nearest neighboring cluster.
-
-# Checkpoint
-For our checkpoint we 
+## Potential Results and Discussion
+We plan to use Word2Vec-based topic coherence metrics to score how well reference topics match clustered emails. The Calinski-Harabasz Index will measure the difference between Word2Vec embeddings for each topic and the average embeddings of all other clusters. This will provide a ratio of intra-cluster to inter-cluster variations based on topic names, gauging label accuracy. Lastly, the Davies-Bouldin Index will assess the cosine similarity between a cluster and its topic compared to the next closest cluster, indicating the topic's distinctiveness from its nearest neighbor.
 
 # Contribution Table For Proposal
 | Member | Job | Description |
