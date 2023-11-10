@@ -1,27 +1,22 @@
 # Topic Modeling with Emails
 
 ## Background
-In the modern age of information about 56.5% of emails sent in 2022 were spam. This presents a problem for the average person since this detracts attention away from actual important mail. Our goal in this project is to create an email clustering system that accurately clusters emails based on specific topics a user may want to see in their inbox, using it for inbox filtration in the future.
+The task of sorting through emails is a tedious and time-consuming activity that impacts numerous users daily. With the staggering statistic that 56.5 percent of all emails in 2022 were categorized as spam, the demand for efficient and intelligent email filtering systems is higher than ever. Despite existing measures, current systems still fall short, frequently permitting spam and irrelevant messages to infiltrate inboxes. This inefficiency not only leads to a loss of productivity as users sift through unwanted emails, but it also increases the likelihood of overlooking crucial correspondence. Our project is dedicated to developing an email clustering system, leveraging machine learning to organize emails into user-defined topics, ensuring that recipients are presented with emails that align with their interests and priorities.
+
 
 ## Problem Definition
-Emails are a key communication tool for researchers, students, and professionals. Due to its widespread use, email inboxes often become cluttered and disorganized, causing vital messages to be overshadowed by less important ones. This leads to unresolved urgent matters and decreased productivity for many. The pervasive use of email amplifies these challenges.
+Email serves as a pivotal communication hub for a wide array of individuals including researchers, students, and professionals. The ubiquity of its use, however, renders it susceptible to congestion and disarray due to the volume of incoming messages that vary in significance. Such disorder can result in vital communications being overshadowed by those of lesser relevance, potentially leaving pressing issues unaddressed. This leads to disorganization and a decline in efficiency for countless users. Given the extensive reliance on email for daily exchanges, the ramifications of this disorganization are particularly concerning, highlighting the critical need for more refined management solutions.
+
 
 ## Methods
-We plan to approach solving this problem using 3 main ML pipelines...
-1. TF-IDF + PCA + Pachinko Allocation Model (PAM):
-   - TF-IDF: It assesses the relevance of frequency of phrases and keywords across documents. By evaluating a phrase's significance across a document corpus, we can pinpoint crucial keywords within emails.
-   - PCA: This technique reduces the dimensionality of the keywords extracted via TF-IDF, emphasizing those that yield substantial importance for clustering.
-   - PAM: A hierarchical topic modeling approach for captures correlations between vectorized representations of emails for clustering them into topics.
+In this midterm report for our project on email clustering, we have implemented and compared two distinct models designed to organize emails into coherent clusters, facilitating easier navigation and management for users based on their topical preferences.
 
-2. Doc2Vec + Lbl2Vec:
-   - Doc2Vec: An extension of word2vec, it allows for capturing the semantic essence of entire documents. Using this, each email is converted into fixed-size vector embeddings.
-   - kNN Model: Post vectorization, emails are clustered where centroids represent semantic essence.
-   - Lbl2Vec: This model deciphers the vector embeddings’ meaning by associating them with labels.
+The first model employs the Document to Vector (Doc2Vec) algorithm, which represents each email as a 256-dimensional vector. This embedding captures the semantic meaning within the email content, effectively condensing the information into a form that preserves contextual relationships between words. Upon vectorization, we utilize the k-Nearest Neighbors (kNN) algorithm for the clustering phase. kNN classifies emails into clusters based on similarity scores derived from the vector representations, where each email is assigned to the cluster with the nearest centroid in the feature space. This model is straightforward and allows for quick retrieval of similar emails, although the choice of 'k' will significantly impact the granularity of the clustering, requiring careful tuning to strike a balance between overgeneralization and fragmentation of topics.
 
-3. Non-Negative Matrix Factorization (NNMF):
-   - BERT: A pre-trained neural model, BERT captures contextual relationships bi-directionally within texts. By employing it, we intend to vectorize the email content.
-   - Document Term Matrix (DTM): The resultant vector embeddings are transformed into a DTM wherein each row represents an email and columns correspond to words.
-   - NNMF: This algorithm's application facilitates clustering of the emails in the DTM by discernible topics.
+The second model takes a different approach by first applying the Term Frequency-Inverse Document Frequency (TF-IDF) technique. This method transforms the text data into a sparse matrix where each email is represented by a vector indicating the frequency of terms weighted by their importance across the corpus. Given the high dimensionality of the resulting vectors, we then perform dimensionality reduction using Principal Component Analysis (PCA), which seeks to reduce the feature space while maintaining as much variance as possible.
+
+Subsequently, Latent Semantic Analysis (LSA) is applied, which further reduces dimensions and identifies latent topics by grouping together terms that co-occur across the corpus, thereby uncovering underlying thematic structures. This model is particularly powerful for large datasets, capable of extracting and clustering emails based on the nuanced themes that may not be immediately apparent through direct term comparisons. However, the transformations applied during PCA and LSA may result in a loss of interpretability and require a more complex pipeline to process and cluster the emails effectively.
+
 
 ## Dataset (Checkpoint)
 As we’ll need an extensive training dataset of emails to facilitate the above methods, we plan to use the [Enron Dataset](https://www.cs.cmu.edu/~enron/), which contains emails of about 150 users and has been compiled with 500,000 messages. This dataset contains information about sender, receiver, timestamp when it was sent, subject and body of the email.
