@@ -1,15 +1,20 @@
 # Topic Modeling with Emails
 
 ## Introduction
+
+### Background
+
 The task of sorting through emails is a tedious and time-consuming activity that impacts numerous users daily. With the staggering statistic that 56.5 percent of all emails in 2022 were categorized as spam, the demand for efficient and intelligent email filtering systems is higher than ever. Despite existing measures, current systems still fall short, frequently permitting spam and irrelevant messages to infiltrate inboxes. This inefficiency not only leads to a loss of productivity as users sift through unwanted emails, but it also increases the likelihood of overlooking crucial correspondence. Our project is dedicated to developing an email clustering system, leveraging machine learning to organize emails into user-defined topics, ensuring that recipients are presented with emails that align with their interests and priorities.
 
-## Dataset (Checkpoint)
-As we’ll need an extensive training dataset of emails to facilitate the above methods, we plan to use the [Enron Dataset](https://www.cs.cmu.edu/~enron/), which contains emails of about 150 users and has been compiled with 500,000 messages. This dataset contains information about sender, receiver, timestamp when it was sent, subject and body of the email.
+### Dataset
+We are using the [Enron Dataset](https://www.cs.cmu.edu/~enron/) to gain an extensive set of emails for use in our methods. This dataset contains emails of about 150 users and has been compiled with 500,000 messages. This dataset contains information about sender, receiver, timestamp when it was sent, subject and body of the email. For the purposes of this project we used solely the email information in the dataset.
 
 ## Problem Definition
+
 Email serves as a pivotal communication hub for a wide array of individuals including researchers, students, and professionals. The ubiquity of its use, however, renders it susceptible to congestion and disarray due to the volume of incoming messages that vary in significance. Such disorder can result in vital communications being overshadowed by those of lesser relevance, potentially leaving pressing issues unaddressed. This leads to disorganization and a decline in efficiency for countless users. Given the extensive reliance on email for daily exchanges, the ramifications of this disorganization are particularly concerning, highlighting the critical need for more refined management solutions.
 
 ## Methods
+
 In this midterm report, we have implemented and compared two distinct models designed to organize emails into coherent clusters, facilitating easier navigation and management for users based on their topical preferences.
 
 ### Model 1: Doc2Vec+K-means
