@@ -1,30 +1,37 @@
 # Topic Modeling with Emails
 
-## Background
-In the modern age of information about 56.5% of emails sent in 2022 were spam. This presents a problem for the average person since this detracts attention away from actual important mail. Our goal in this project is to create an email clustering system that accurately clusters emails based on specific topics a user may want to see in their inbox, using it for inbox filtration in the future.
+## Introduction
+
+### Background
+
+The task of sorting through emails is a tedious and time-consuming activity that impacts numerous users daily. With the staggering statistic that 56.5 percent of all emails in 2022 were categorized as spam, the demand for efficient and intelligent email filtering systems is higher than ever. Despite existing measures, current systems still fall short, frequently permitting spam and irrelevant messages to infiltrate inboxes. This inefficiency not only leads to a loss of productivity as users sift through unwanted emails, but it also increases the likelihood of overlooking crucial correspondence. Our project is dedicated to developing an email clustering system, leveraging machine learning to organize emails into user-defined topics, ensuring that recipients are presented with emails that align with their interests and priorities.
+
+### Dataset
+We are using the [Enron Dataset](https://www.cs.cmu.edu/~enron/) to gain an extensive set of emails for use in our methods. This dataset contains emails of about 150 users and has been compiled with 500,000 messages. This dataset contains information about sender, receiver, timestamp when it was sent, subject and body of the email. For the purposes of this project we used solely the email information in the dataset.
 
 ## Problem Definition
-Emails are a key communication tool for researchers, students, and professionals. Due to its widespread use, email inboxes often become cluttered and disorganized, causing vital messages to be overshadowed by less important ones. This leads to unresolved urgent matters and decreased productivity for many. The pervasive use of email amplifies these challenges.
+
+Email serves as a pivotal communication hub for a wide array of individuals including researchers, students, and professionals. The ubiquity of its use, however, renders it susceptible to congestion and disarray due to the volume of incoming messages that vary in significance. Such disorder can result in vital communications being overshadowed by those of lesser relevance, potentially leaving pressing issues unaddressed. This leads to disorganization and a decline in efficiency for countless users. Given the extensive reliance on email for daily exchanges, the ramifications of this disorganization are particularly concerning, highlighting the critical need for more refined management solutions.
 
 ## Methods
-We plan to approach solving this problem using 3 main ML pipelines...
-1. TF-IDF + PCA + Pachinko Allocation Model (PAM):
-   - TF-IDF: It assesses the relevance of frequency of phrases and keywords across documents. By evaluating a phrase's significance across a document corpus, we can pinpoint crucial keywords within emails.
-   - PCA: This technique reduces the dimensionality of the keywords extracted via TF-IDF, emphasizing those that yield substantial importance for clustering.
-   - PAM: A hierarchical topic modeling approach for captures correlations between vectorized representations of emails for clustering them into topics.
 
-2. Doc2Vec + Lbl2Vec:
-   - Doc2Vec: An extension of word2vec, it allows for capturing the semantic essence of entire documents. Using this, each email is converted into fixed-size vector embeddings.
-   - kNN Model: Post vectorization, emails are clustered where centroids represent semantic essence.
-   - Lbl2Vec: This model deciphers the vector embeddings’ meaning by associating them with labels.
+In this midterm report, we have implemented and compared two distinct models designed to organize emails into coherent clusters, facilitating easier navigation and management for users based on their topical preferences.
 
-3. Non-Negative Matrix Factorization (NNMF):
-   - BERT: A pre-trained neural model, BERT captures contextual relationships bi-directionally within texts. By employing it, we intend to vectorize the email content.
-   - Document Term Matrix (DTM): The resultant vector embeddings are transformed into a DTM wherein each row represents an email and columns correspond to words.
-   - NNMF: This algorithm's application facilitates clustering of the emails in the DTM by discernible topics.
+### Model 1: Doc2Vec+K-means
 
-## Dataset (Checkpoint)
-As we’ll need an extensive training dataset of emails to facilitate the above methods, we plan to use the [Enron Dataset](https://www.cs.cmu.edu/~enron/), which contains emails of about 150 users and has been compiled with 500,000 messages. This dataset contains information about sender, receiver, timestamp when it was sent, subject and body of the email.
+Given the raw text data from each of the emails of the processed Enron dataset, we decided to sample 20% of the total emails due to computational complexity related to Doc2Vec. Note one thing that should be mentioned is that this sampling is different from Model 2's (which sampled 80% of the total emails). The reason for this was that we ran into issues related to training Doc2Vec taking far too long to train to convergence if we used all the emails. One thing that should be noted however is that as we sample 20% which is greater than 100 / 10 =  10% of the total population of the enron dataset (by the 10% condition) this sample is generalizable to the complete population.
+
+Using this subset of the data, we trained an unsupervised Doc2Vec model to extract a semantically significant 256-dimensional vector of each document. Doc2Vec is an extension of the Word2Vec model, which increases the scope to include document-level context, rather than just word-level. This approach allows the model to learn not only the significance of individual words, but also how these words come together to convey meaning in a larger text. This model was trained for 5 epochs to achieve convergence for the meaning in these vectors.
+
+Given these semantically significant embeddings, we ran PCA, an unsupervised dimensionality reduction algorithm, to “narrow” and “focus” the embeddings on the most important semantic differences between the document. This allowed for clearer and more significant clustering in the last step (k-means) while also keeping the computational complexity of the model pipeline as a whole under control.
+
+These reduced embeddings were then passed into the k-means algorithm in order to cluster the documents into “topics.” The k-means algorithm is a centroid-based clustering method that partitions the data into K distinct, non-overlapping subgroups, or clusters. This model is straightforward and allows for quick retrieval of similar emails, although it requires a careful choice of 'k' will significantly impact the granularity of the clustering, requiring careful tuning to strike a balance between overgeneralization and fragmentation of topics.
+
+### Model 2: TF-IDF+LDA
+
+The second model takes a different approach by first applying the Term Frequency-Inverse Document Frequency (TF-IDF) technique. This method transforms the text data into a sparse matrix where each email is represented by a vector indicating the frequency of terms weighted by their importance across the corpus. Given the high dimensionality of the resulting vectors, we then perform PCA dimensionality reduction using the TruncatedSVD tehcnique in scit-kit learn. This seeks to reduce the feature space while maintaining as much variance as possible. 
+
+Subsequently, Latent Semantic Analysis (LSA) is applied, which further reduces dimensions and identifies latent topics by grouping together terms that co-occur across the corpus, thereby uncovering underlying thematic structures. This model is particularly powerful for large datasets, capable of extracting and clustering emails based on the nuanced themes that may not be immediately apparent through direct term comparisons. However, the transformations applied during PCA and LSA may result in a loss of interpretability and require a more complex pipeline to process and cluster the emails effectively.
 
 ## Potential Results and Discussion
 We plan to use Word2Vec-based topic coherence metrics to score how well reference topics match clustered emails. The Calinski-Harabasz Index will measure the difference between Word2Vec embeddings for each topic and the average embeddings of all other clusters. This will provide a ratio of intra-cluster to inter-cluster variations based on topic names, gauging label accuracy. Lastly, the Davies-Bouldin Index will assess the cosine similarity between a cluster and its topic compared to the next closest cluster, indicating the topic's distinctiveness from its nearest neighbor.
