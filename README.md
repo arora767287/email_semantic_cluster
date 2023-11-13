@@ -39,16 +39,22 @@ The next significant step in our preprocessing was the removal of common English
 
 This thorough preprocessing of the Enron emails dataset was a critical foundation for our project. It enabled us to effectively apply advanced techniques like TF-IDF and LDA, which were pivotal in clustering the emails and achieving our project's goal of creating an efficient email categorization system.
 
-
 #### Model Description
 
 Initially, we employed the TF-IDF technique, a widely-used feature extraction method in text mining, to convert our email dataset into a format suitable for machine learning. This method works by quantifying the importance of a word in a document relative to a collection of documents or corpus. The TF-IDF model was instantiated with parameters designed to optimize performance: it ignores terms appearing in more than 85% of documents (max_df=0.85), disregards terms that appear in less than two documents (min_df=2), and excludes common English stop words to focus on more meaningful terms. After fitting our model to the email contents, we obtained a sparse matrix of TF-IDF vectors, representing the significance of words across the emails.
 
 To further enhance our understanding of the data, we applied Truncated Singular Value Decomposition (SVD) to the TF-IDF vectors. This dimensionality reduction technique was used to condense the information into a manageable number of components, specifically four in our case, while preserving the essential characteristics of the dataset. The resultant lower-dimensional representation was then visualized using a scatter matrix plot, enabling us to observe potential clusters and patterns in the email data.
 
+![truncatedSVD](https://github.com/arora767287/email_semantic_cluster/assets/82481744/20ed10dc-4b44-439d-8237-832c7097e1b2)
+
+
+![LSA](https://github.com/arora767287/email_semantic_cluster/assets/82481744/49289bf8-141e-423f-ba0b-240c383ba13e)
+
+
 Parallel to this, we implemented the LDA model, a probabilistic technique for topic modeling. This method aims to discover the latent topics that pervade a large collection of documents, making it particularly suitable for our goal of clustering emails by topic. To prepare our data for the LDA model, we first tokenized our emails and created a dictionary and corpus. The LDA model was then configured with five topics, reflecting our aim to categorize emails into a manageable number of groups. Upon training the model, each email was represented as a distribution over these topics.
 
 Finally, to visualize the results of the LDA model, we transformed the topic distributions into a DataFrame and plotted them using a scatter matrix. This visualization provided us with a clear view of how the emails were distributed across the different topics, thus fulfilling our objective of clustering emails to enhance inbox management.
+
 
 
 ## Potential Results and Discussion
