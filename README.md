@@ -64,15 +64,12 @@ To further enhance our understanding of the data, we applied Truncated Singular 
 
 ![truncatedSVD](https://github.com/arora767287/email_semantic_cluster/assets/82481744/20ed10dc-4b44-439d-8237-832c7097e1b2)
 
-Next, we applied LSA to the TF-IDF matrix for further dimensionality reduction. LSA extracts the most important features, capturing the latent structure of the data. This time, the dimensionality is reduced to 2 for visualization in this plot.
-
-
-![LSA](https://github.com/arora767287/email_semantic_cluster/assets/82481744/49289bf8-141e-423f-ba0b-240c383ba13e)
-
-
 Parallel to this, we implemented the LDA model, a probabilistic technique for topic modeling. This method aims to discover the latent topics that pervade a large collection of documents, making it particularly suitable for our goal of clustering emails by topic. To prepare our data for the LDA model, we first tokenized our emails and created a dictionary and corpus. The LDA model was then configured with five topics, reflecting our aim to categorize emails into a manageable number of groups. Upon training the model, each email was represented as a distribution over these topics.
 
 Finally, to visualize the results of the LDA model, we transformed the topic distributions into a DataFrame and plotted them using a scatter matrix. This visualization provided us with a clear view of how the emails were distributed across the different topics, thus fulfilling our objective of clustering emails to enhance inbox management.
+
+
+![LDA](https://github.com/arora767287/email_semantic_cluster/assets/82481744/dd29c01d-ed74-435f-91d0-ce6e9f70e1ce)
 
 
 
