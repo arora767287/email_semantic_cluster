@@ -29,9 +29,27 @@ These reduced embeddings were then passed into the k-means algorithm in order to
 
 ### Model 2: TF-IDF+LDA
 
-The second model takes a different approach by first applying the Term Frequency-Inverse Document Frequency (TF-IDF) technique. This method transforms the text data into a sparse matrix where each email is represented by a vector indicating the frequency of terms weighted by their importance across the corpus. Given the high dimensionality of the resulting vectors, we then perform PCA dimensionality reduction using the TruncatedSVD tehcnique in scit-kit learn. This seeks to reduce the feature space while maintaining as much variance as possible. 
+#### Data Preprocessing
 
-Subsequently, Latent Semantic Analysis (LSA) is applied, which further reduces dimensions and identifies latent topics by grouping together terms that co-occur across the corpus, thereby uncovering underlying thematic structures. This model is particularly powerful for large datasets, capable of extracting and clustering emails based on the nuanced themes that may not be immediately apparent through direct term comparisons. However, the transformations applied during PCA and LSA may result in a loss of interpretability and require a more complex pipeline to process and cluster the emails effectively.
+In our project, preprocessing the Enron emails dataset was a fundamental step to ensure the data's integrity and usability for machine learning analysis. We started by loading the dataset into a pandas DataFrame, focusing primarily on the email body content. The initial stage of preprocessing involved a comprehensive cleaning process where we removed HTML tags, special characters, and unnecessary whitespace from the emails. This cleaning was crucial to eliminate noise and standardize the text. In addition to cleaning, we also normalized the text by converting it to lowercase, ensuring uniformity and preventing case sensitivity from affecting our analysis.
+
+After cleaning and normalizing the text, we addressed any missing values in the dataset. Handling these missing values was essential to maintain the integrity of our analysis. This step was followed by the tokenization of the email content, where we broke down the text into individual words. Tokenization is a key process in text mining as it prepares the data for feature extraction and modeling.
+
+The next significant step in our preprocessing was the removal of common English stop words. Eliminating these words allowed us to focus on the more meaningful content of the emails. Once the dataset was cleaned, normalized, tokenized, and freed of stop words, we applied the TF-IDF vectorization. This technique transformed the text into a numerical format, emphasizing the importance of specific terms within the corpus.
+
+This thorough preprocessing of the Enron emails dataset was a critical foundation for our project. It enabled us to effectively apply advanced techniques like TF-IDF and LDA, which were pivotal in clustering the emails and achieving our project's goal of creating an efficient email categorization system.
+
+
+#### Model Description
+
+Initially, we employed the TF-IDF technique, a widely-used feature extraction method in text mining, to convert our email dataset into a format suitable for machine learning. This method works by quantifying the importance of a word in a document relative to a collection of documents or corpus. The TF-IDF model was instantiated with parameters designed to optimize performance: it ignores terms appearing in more than 85% of documents (max_df=0.85), disregards terms that appear in less than two documents (min_df=2), and excludes common English stop words to focus on more meaningful terms. After fitting our model to the email contents, we obtained a sparse matrix of TF-IDF vectors, representing the significance of words across the emails.
+
+To further enhance our understanding of the data, we applied Truncated Singular Value Decomposition (SVD) to the TF-IDF vectors. This dimensionality reduction technique was used to condense the information into a manageable number of components, specifically four in our case, while preserving the essential characteristics of the dataset. The resultant lower-dimensional representation was then visualized using a scatter matrix plot, enabling us to observe potential clusters and patterns in the email data.
+
+Parallel to this, we implemented the LDA model, a probabilistic technique for topic modeling. This method aims to discover the latent topics that pervade a large collection of documents, making it particularly suitable for our goal of clustering emails by topic. To prepare our data for the LDA model, we first tokenized our emails and created a dictionary and corpus. The LDA model was then configured with five topics, reflecting our aim to categorize emails into a manageable number of groups. Upon training the model, each email was represented as a distribution over these topics.
+
+Finally, to visualize the results of the LDA model, we transformed the topic distributions into a DataFrame and plotted them using a scatter matrix. This visualization provided us with a clear view of how the emails were distributed across the different topics, thus fulfilling our objective of clustering emails to enhance inbox management.
+
 
 ## Potential Results and Discussion
 We plan to use Word2Vec-based topic coherence metrics to score how well reference topics match clustered emails. The Calinski-Harabasz Index will measure the difference between Word2Vec embeddings for each topic and the average embeddings of all other clusters. This will provide a ratio of intra-cluster to inter-cluster variations based on topic names, gauging label accuracy. Lastly, the Davies-Bouldin Index will assess the cosine similarity between a cluster and its topic compared to the next closest cluster, indicating the topic's distinctiveness from its nearest neighbor.
