@@ -9,6 +9,15 @@ The task of sorting through emails is a tedious and time-consuming activity that
 ### Dataset
 We are using the [Enron Dataset](https://www.cs.cmu.edu/~enron/) to gain an extensive set of emails for use in our methods. This dataset contains emails of about 150 users and has been compiled with 500,000 messages. This dataset contains information about sender, receiver, timestamp when it was sent, subject and body of the email. For the purposes of this project we used solely the email information in the dataset.
 
+To understand our dataset, we can add some visualizations. 
+
+<img width="1185" alt="image" src="https://github.com/arora767287/email_semantic_cluster/assets/44822455/b38e8faf-fb7c-4aea-93ac-33fa4dff81d8">
+
+This shows the people who sent the most emails during this time and how many emails they sent. 
+
+
+
+
 ## Problem Definition
 
 Email serves as a pivotal communication hub for a wide array of individuals including researchers, students, and professionals. The ubiquity of its use, however, renders it susceptible to congestion and disarray due to the volume of incoming messages that vary in significance. Such disorder can result in vital communications being overshadowed by those of lesser relevance, potentially leaving pressing issues unaddressed. This leads to disorganization and a decline in efficiency for countless users. Given the extensive reliance on email for daily exchanges, the ramifications of this disorganization are particularly concerning, highlighting the critical need for more refined management solutions.
