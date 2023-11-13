@@ -47,6 +47,8 @@ To further enhance our understanding of the data, we applied Truncated Singular 
 
 ![truncatedSVD](https://github.com/arora767287/email_semantic_cluster/assets/82481744/20ed10dc-4b44-439d-8237-832c7097e1b2)
 
+Next, we applied LSA to the TF-IDF matrix for further dimensionality reduction. LSA extracts the most important features, capturing the latent structure of the data. This time, the dimensionality is reduced to 2 for visualization in this plot.
+
 
 ![LSA](https://github.com/arora767287/email_semantic_cluster/assets/82481744/49289bf8-141e-423f-ba0b-240c383ba13e)
 
