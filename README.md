@@ -15,6 +15,9 @@ To understand our dataset, we can add some visualizations.
 
 This shows the people who sent the most emails during this time and how many emails they sent. 
 
+We also have a word cloud that shows which words were sent the most number of times during the history of the company. 
+
+![image](https://github.com/arora767287/email_semantic_cluster/assets/44822455/fb53838a-ed5b-4444-9fc4-03995a79115a)
 
 
 
