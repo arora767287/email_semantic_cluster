@@ -19,6 +19,11 @@ We also have a word cloud that shows which words were sent the most number of ti
 
 ![image](https://github.com/arora767287/email_semantic_cluster/assets/44822455/fb53838a-ed5b-4444-9fc4-03995a79115a)
 
+We also have the number of emails sent over time: 
+
+<img width="967" alt="image" src="https://github.com/arora767287/email_semantic_cluster/assets/44822455/4561ef63-d27e-4d0e-a244-fde716ece942">
+
+
 
 
 ## Problem Definition
