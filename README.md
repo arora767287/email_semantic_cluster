@@ -83,12 +83,16 @@ Finally, to visualize the results of the LDA model, we transformed the topic dis
 ## Results and Discussion
 
 Model 1: Doc2Vec+K-means
+
 Davies-Bouldin Index: 6.040773131121281
+
 Calinski-Harabasz Index: 1479.2366698699566
 
 
 Model 2: TF-IDF+LDA
+
 Davies-Bouldin Index: 0.3863525829481374
+
 Calinski-Harabasz Index: 1630166.5380492713
 
 
