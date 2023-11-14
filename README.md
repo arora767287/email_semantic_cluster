@@ -56,7 +56,12 @@ These reduced embeddings were then passed into the k-means algorithm in order to
 
 <img width="396" alt="image" src="https://github.com/arora767287/email_semantic_cluster/assets/44822455/5ecccff4-5f36-4dbe-8409-9afb84d2dce3">
 
-We found that the optimal number of clusters is 9.
+We found that the optimal number of clusters is 9. We examined a number of different clusters to reach this conclusion. 
+
+<img width="537" alt="image" src="https://github.com/arora767287/email_semantic_cluster/assets/44822455/68c47523-b145-43f0-a072-1bd1b463b68a">
+<img width="539" alt="image" src="https://github.com/arora767287/email_semantic_cluster/assets/44822455/7c2395a7-e71a-42b4-af30-83dd4377825b">
+<img width="525" alt="image" src="https://github.com/arora767287/email_semantic_cluster/assets/44822455/3911d38c-d8a2-47a6-bbb2-0f4a7e50fc21">
+<img width="528" alt="image" src="https://github.com/arora767287/email_semantic_cluster/assets/44822455/02461cf3-1414-4572-86ac-b3a0532e6634">
 
 ### Model 2: TF-IDF+LDA
 
