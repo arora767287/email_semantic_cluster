@@ -30,11 +30,7 @@ We also have the number of emails sent over time:
 
 Email serves as a pivotal communication hub for a wide array of individuals including researchers, students, and professionals. The ubiquity of its use, however, renders it susceptible to congestion and disarray due to the volume of incoming messages that vary in significance. Such disorder can result in vital communications being overshadowed by those of lesser relevance, potentially leaving pressing issues unaddressed. This leads to disorganization and a decline in efficiency for countless users. Given the extensive reliance on email for daily exchanges, the ramifications of this disorganization are particularly concerning, highlighting the critical need for more refined management solutions.
 
-## Methods
-
-In this midterm report, we have implemented and compared two distinct models designed to organize emails into coherent clusters, facilitating easier navigation and management for users based on their topical preferences.
-
-### Data Preprocessing
+## Data Preprocessing
 
 In our project, preprocessing the Enron emails dataset was a fundamental step to ensure the data's integrity and usability for machine learning analysis. We started by loading the dataset into a pandas DataFrame, focusing primarily on the email body content. The initial stage of preprocessing involved a comprehensive cleaning process where we removed HTML tags, special characters, and unnecessary whitespace from the emails. This cleaning was crucial to eliminate noise and standardize the text. In addition to cleaning, we also normalized the text by converting it to lowercase, ensuring uniformity and preventing case sensitivity from affecting our analysis.
 
@@ -43,6 +39,10 @@ After cleaning and normalizing the text, we addressed any missing values in the 
 The next significant step in our preprocessing was the removal of common English stop words. Eliminating these words allowed us to focus on the more meaningful content of the emails. Once the dataset was cleaned, normalized, tokenized, and freed of stop words, we vectorized it. This technique transformed the text into a numerical format, emphasizing the importance of specific terms within the corpus.
 
 This thorough preprocessing of the Enron emails dataset was a critical foundation for our project. It enabled us to effectively apply our models which were pivotal in clustering the emails and achieving our project's goal of creating an efficient email categorization system.
+
+## Methods
+
+In this midterm report, we have implemented and compared two distinct models designed to organize emails into coherent clusters, facilitating easier navigation and management for users based on their topical preferences.
 
 ### Model 1: Doc2Vec+K-means
 
