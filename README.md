@@ -54,6 +54,10 @@ Given these semantically significant embeddings, we ran PCA, an unsupervised dim
 
 These reduced embeddings were then passed into the k-means algorithm in order to cluster the documents into “topics.” The k-means algorithm is a centroid-based clustering method that partitions the data into K distinct, non-overlapping subgroups, or clusters. This model is straightforward and allows for quick retrieval of similar emails, although it requires a careful choice of 'k' will significantly impact the granularity of the clustering, requiring careful tuning to strike a balance between overgeneralization and fragmentation of topics.
 
+<img width="396" alt="image" src="https://github.com/arora767287/email_semantic_cluster/assets/44822455/5ecccff4-5f36-4dbe-8409-9afb84d2dce3">
+
+We found that the optimal number of clusters is 9.
+
 ### Model 2: TF-IDF+LDA
 
 Initially, we employed the TF-IDF technique, a widely-used feature extraction method in text mining, to convert our email dataset into a format suitable for machine learning. This method works by quantifying the importance of a word in a document relative to a collection of documents or corpus. The TF-IDF model was instantiated with parameters designed to optimize performance: it ignores terms appearing in more than 85% of documents (max_df=0.85), disregards terms that appear in less than two documents (min_df=2), and excludes common English stop words to focus on more meaningful terms. After fitting our model to the email contents, we obtained a sparse matrix of TF-IDF vectors, representing the significance of words across the emails.
@@ -73,10 +77,6 @@ Finally, to visualize the results of the LDA model, we transformed the topic dis
 
 ## Potential Results and Discussion
 We plan to use Word2Vec-based topic coherence metrics to score how well reference topics match clustered emails. The Calinski-Harabasz Index will measure the difference between Word2Vec embeddings for each topic and the average embeddings of all other clusters. This will provide a ratio of intra-cluster to inter-cluster variations based on topic names, gauging label accuracy. Lastly, the Davies-Bouldin Index will assess the cosine similarity between a cluster and its topic compared to the next closest cluster, indicating the topic's distinctiveness from its nearest neighbor.
-
-<img width="396" alt="image" src="https://github.com/arora767287/email_semantic_cluster/assets/44822455/5ecccff4-5f36-4dbe-8409-9afb84d2dce3">
-
-We found that the optimal number of clusters is 9.
 
 <img width="586" alt="image" src="https://github.com/arora767287/email_semantic_cluster/assets/44822455/3f736ac0-4752-4bad-b16d-dbd6d3386464">
 
