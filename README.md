@@ -84,6 +84,9 @@ We plan to use Word2Vec-based topic coherence metrics to score how well referenc
 
 We see that the elbow for both the calinski-harabasz score and davies bouldin score is around 9 clusters. 
 
+# Next Steps
+Going forward we hope to do one more model pipeline for topic modeling on Emails. In addition, we hope to broaden the metrics we use to include the topic coherence score to gain additional valuable insight into the clusters we’re creating. One stretch goal we have for the final submission is to use investigative techniques to determine what the model pipelines’ clusters topics are and whether or not they truly represent something meaningful that a user would want to see.
+
 # Contribution Table For Proposal
 | Member | Job | Description |
 | --- | --- | --- |
