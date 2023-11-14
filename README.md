@@ -80,7 +80,18 @@ Finally, to visualize the results of the LDA model, we transformed the topic dis
 
 
 
-## Potential Results and Discussion
+## Results and Discussion
+
+Model 1: Doc2Vec+K-means
+Davies-Bouldin Index: 6.040773131121281
+Calinski-Harabasz Index: 1479.2366698699566
+
+
+Model 2: TF-IDF+LDA
+Davies-Bouldin Index: 0.3863525829481374
+Calinski-Harabasz Index: 1630166.5380492713
+
+
 We plan to use Word2Vec-based topic coherence metrics to score how well reference topics match clustered emails. The Calinski-Harabasz Index will measure the difference between Word2Vec embeddings for each topic and the average embeddings of all other clusters. This will provide a ratio of intra-cluster to inter-cluster variations based on topic names, gauging label accuracy. Lastly, the Davies-Bouldin Index will assess the cosine similarity between a cluster and its topic compared to the next closest cluster, indicating the topic's distinctiveness from its nearest neighbor.
 
 <img width="586" alt="image" src="https://github.com/arora767287/email_semantic_cluster/assets/44822455/3f736ac0-4752-4bad-b16d-dbd6d3386464">
