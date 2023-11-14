@@ -81,9 +81,9 @@ We plan to use Word2Vec-based topic coherence metrics to score how well referenc
 | --- | --- | --- |
 | Katherine | Video | Recording and editing of video |
 | Tanush, Nitya & Katherine | Slides | Presentation visuals for video |
-| Ajay | Introduction & Background | Introduction and background for proposal |
+| Ajay, Samarth | Introduction & Background | Introduction and background for proposal |
 | Nitya | Problem Description | Description of problem for proposal |
-| Nitya, Tanush & Ajay | Methods | Methods for proposal |
+| Nitya, Tanush, Samarth & Ajay | Methods | Methods for proposal |
 | Tanush & Nitya | Potential Results and Discussion | Metrics for proposal |
 | All | Literature Review | Review of general methods for topic modeling |
 | All | GitHub Pages | Making and formatting of GitHub pages website |
