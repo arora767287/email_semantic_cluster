@@ -74,7 +74,7 @@ Finally, to visualize the results of the LDA model, we transformed the topic dis
 ## Potential Results and Discussion
 We plan to use Word2Vec-based topic coherence metrics to score how well reference topics match clustered emails. The Calinski-Harabasz Index will measure the difference between Word2Vec embeddings for each topic and the average embeddings of all other clusters. This will provide a ratio of intra-cluster to inter-cluster variations based on topic names, gauging label accuracy. Lastly, the Davies-Bouldin Index will assess the cosine similarity between a cluster and its topic compared to the next closest cluster, indicating the topic's distinctiveness from its nearest neighbor.
 
-<img width="396" alt="image" src="https://github.com/arora767287/email_semantic_cluster/assets/44822455/5ecccff4-5f36-4dbe-8409-9afb84d2dce3>
+<img width="396" alt="image" src="https://github.com/arora767287/email_semantic_cluster/assets/44822455/5ecccff4-5f36-4dbe-8409-9afb84d2dce3">
 
 We found that the optimal number of clusters is 9.
 
