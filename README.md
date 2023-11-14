@@ -102,11 +102,11 @@ Calinski-Harabasz Index: 1630166.5380492713
 
 <img width="586" alt="image" src="https://github.com/arora767287/email_semantic_cluster/assets/44822455/3f736ac0-4752-4bad-b16d-dbd6d3386464">
 
-**Davies-Bouldin Index**
+**Calinski-Harabasz Score**
 
 <img width="545" alt="image" src="https://github.com/arora767287/email_semantic_cluster/assets/44822455/8d62af1f-2a47-4efc-8357-c570a23344f3">
 
-**Calinski-Harabasz Score**
+**Davies-Bouldin Index**
 
 **Images: We see that the elbow for both the Calinski-Harabasz Score and Davies Bouldin Score is around 9 clusters.**
 
