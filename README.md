@@ -80,7 +80,7 @@ We plan to use Word2Vec-based topic coherence metrics to score how well referenc
 | Member | Job | Description |
 | --- | --- | --- |
 | Katherine & Samarth | Model 2 | Preprocessing, Creation, Training, Metrics and Analysis of Model 2 |
-| Tanush, Nitya | Slides | Preprocessing, Creation, Training, Metrics and Analysis of Model 1 |
+| Tanush, Nitya | Model 1 | Preprocessing, Creation, Training, Metrics and Analysis of Model 1 |
 | Katherine & Ajay | Visualization | Visualizations of Data and Models |
 | All | GitHub Pages | Making and formatting of GitHub pages website |
 
