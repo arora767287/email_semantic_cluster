@@ -103,8 +103,15 @@ Calinski-Harabasz Index: 1630166.5380492713
 <img width="586" alt="image" src="https://github.com/arora767287/email_semantic_cluster/assets/44822455/3f736ac0-4752-4bad-b16d-dbd6d3386464">
 
 <img width="545" alt="image" src="https://github.com/arora767287/email_semantic_cluster/assets/44822455/8d62af1f-2a47-4efc-8357-c570a23344f3">
+_We see that the elbow for both the calinski-harabasz score and davies bouldin score is around 9 clusters._
 
-We see that the elbow for both the calinski-harabasz score and davies bouldin score is around 9 clusters. 
+
+For the model 1 pipeline, we were tasked with finding the best number of clusters to evaluate our model upon. As such, we plotted an elbow curve across k=2 to k=50 (inclusive) used as the number of clusters we ran KMeans on the output of our PCA for. The elbow curve plotted above shows that the best value for the number of clusters occurs at k=9, where the plot of within cluster squared sums reaches a point after which decreases in the WCSS (a metric of the variance within the points of each cluster) are not substantial for increases in the number of clusters. Using this clustering of k=9 clusters, the Davies-Bouldin Index calculated is 6.04, which means that the average distance between document representations in each cluster was greater than the distance between the different identified 9 “clusters” or topics. This presents a significant amount of variance within each grouping of emails, indicative of poor separation boundaries between the emails.
+
+Upon deeper analysis with our model 2 pipeline, the Davies-Bouldin Index is 0.39, which showcases better clustering performance. This lower index indicates improved separation between clusters compared to model 1. Although caution is warranted in direct comparison due to the different scales of Davies-Bouldin Index values, the model displays more distinct topics. 
+
+In addition, the Calinski Harabasz index for the model 1 pipeline was 1479.23, which is a ratio of the between cluster sum of squares to the within cluster sum of squares, with larger indices being significantly better, presenting the k=9 clustering as a good candidate. The Calinski-Harabasz Index for model 2 yields a score of 1,630,166.54. This substantial improvement over model 1's index underscores the effectiveness of our model 2 approach, suggesting better-defined clusters and enhanced separation between them.
+
 
 # Next Steps
 Going forward we hope to do one more model pipeline for topic modeling on Emails. In addition, we hope to broaden the metrics we use to include the topic coherence score to gain additional valuable insight into the clusters we’re creating. One stretch goal we have for the final submission is to use investigative techniques to determine what the model pipelines’ clusters topics are and whether or not they truly represent something meaningful that a user would want to see.
