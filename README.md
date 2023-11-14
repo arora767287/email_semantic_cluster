@@ -79,15 +79,10 @@ We plan to use Word2Vec-based topic coherence metrics to score how well referenc
 # Contribution Table For Proposal
 | Member | Job | Description |
 | --- | --- | --- |
-| Katherine | Video | Recording and editing of video |
-| Tanush, Nitya & Katherine | Slides | Presentation visuals for video |
-| Ajay, Samarth | Introduction & Background | Introduction and background for proposal |
-| Nitya | Problem Description | Description of problem for proposal |
-| Nitya, Tanush, Samarth & Ajay | Methods | Methods for proposal |
-| Tanush & Nitya | Potential Results and Discussion | Metrics for proposal |
-| All | Literature Review | Review of general methods for topic modeling |
+| Katherine & Samarth | Model 2 | Preprocessing, Creation, Training, Metrics and Analysis of Model 2 |
+| Tanush, Nitya | Slides | Preprocessing, Creation, Training, Metrics and Analysis of Model 1 |
+| Katherine & Ajay | Visualization | Visualizations of Data and Models |
 | All | GitHub Pages | Making and formatting of GitHub pages website |
-| Tanush | Gantt Chart | Formatting and creation of Gantt Chart |
 
 [Gantt Chart](https://docs.google.com/spreadsheets/d/1ZUl8Xywp4VTTNtC-8Wq8ZxpYnzXYNJLe/edit?usp=sharing&ouid=101698207149759013919&rtpof=true&sd=true)
 ---
