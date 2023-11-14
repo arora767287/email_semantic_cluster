@@ -55,6 +55,8 @@ Given these semantically significant embeddings, we ran PCA, an unsupervised dim
 
 These reduced embeddings were then passed into the k-means algorithm in order to cluster the documents into “topics.” The k-means algorithm is a centroid-based clustering method that partitions the data into K distinct, non-overlapping subgroups, or clusters. This model is straightforward and allows for quick retrieval of similar emails, although it requires a careful choice of 'k' will significantly impact the granularity of the clustering, requiring careful tuning to strike a balance between overgeneralization and fragmentation of topics.
 
+We ran KMeans with target cluster number inputs from 2 to 50 in order to find the best clustering (most separable) to use as the final model for this pipeline. 
+
 <img width="396" alt="image" src="https://github.com/arora767287/email_semantic_cluster/assets/44822455/5ecccff4-5f36-4dbe-8409-9afb84d2dce3">
 
 We found that the optimal number of clusters is 9. We examined a number of different clusters to reach this conclusion. 
