@@ -110,8 +110,10 @@ Calinski-Harabasz Index: 1630166.5380492713
 
 **Images: We see that the elbow for both the Calinski-Harabasz Score and Davies Bouldin Score is around 9 clusters.**
 
-![DBI CHI](https://github.com/arora767287/email_semantic_cluster/assets/82481744/fe7d5b7b-8bd0-47b4-838c-8810015e8ad3)
+![DBI](https://github.com/arora767287/email_semantic_cluster/assets/82481744/f409e3a0-7222-49e2-ba38-823c18cecd30)
 
+
+![CHI](https://github.com/arora767287/email_semantic_cluster/assets/82481744/7caa90e0-b5f5-46eb-9d1c-4684b8b143af)
 
 
 For the model 1 pipeline, we were tasked with finding the best number of clusters to evaluate our model upon. As such, we plotted an elbow curve across k=2 to k=50 (inclusive) used as the number of clusters we ran KMeans on the output of our PCA for. The elbow curve plotted above shows that the best value for the number of clusters occurs at k=9, where the plot of within cluster squared sums reaches a point after which decreases in the WCSS (a metric of the variance within the points of each cluster) are not substantial for increases in the number of clusters. Using this clustering of k=9 clusters, the Davies-Bouldin Index calculated is 6.04, which means that the average distance between document representations in each cluster was greater than the distance between the different identified 9 “clusters” or topics. This presents a significant amount of variance within each grouping of emails, indicative of poor separation boundaries between the emails.
