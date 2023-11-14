@@ -34,6 +34,16 @@ Email serves as a pivotal communication hub for a wide array of individuals incl
 
 In this midterm report, we have implemented and compared two distinct models designed to organize emails into coherent clusters, facilitating easier navigation and management for users based on their topical preferences.
 
+### Data Preprocessing
+
+In our project, preprocessing the Enron emails dataset was a fundamental step to ensure the data's integrity and usability for machine learning analysis. We started by loading the dataset into a pandas DataFrame, focusing primarily on the email body content. The initial stage of preprocessing involved a comprehensive cleaning process where we removed HTML tags, special characters, and unnecessary whitespace from the emails. This cleaning was crucial to eliminate noise and standardize the text. In addition to cleaning, we also normalized the text by converting it to lowercase, ensuring uniformity and preventing case sensitivity from affecting our analysis.
+
+After cleaning and normalizing the text, we addressed any missing values in the dataset. Handling these missing values was essential to maintain the integrity of our analysis. This step was followed by the tokenization of the email content, where we broke down the text into individual words. Tokenization is a key process in text mining as it prepares the data for feature extraction and modeling.
+
+The next significant step in our preprocessing was the removal of common English stop words. Eliminating these words allowed us to focus on the more meaningful content of the emails. Once the dataset was cleaned, normalized, tokenized, and freed of stop words, we vectorized it. This technique transformed the text into a numerical format, emphasizing the importance of specific terms within the corpus.
+
+This thorough preprocessing of the Enron emails dataset was a critical foundation for our project. It enabled us to effectively apply our models which were pivotal in clustering the emails and achieving our project's goal of creating an efficient email categorization system.
+
 ### Model 1: Doc2Vec+K-means
 
 Given the raw text data from each of the emails of the processed Enron dataset, we decided to sample 20% of the total emails due to computational complexity related to Doc2Vec. Note one thing that should be mentioned is that this sampling is different from Model 2's (which sampled 80% of the total emails). The reason for this was that we ran into issues related to training Doc2Vec taking far too long to train to convergence if we used all the emails. One thing that should be noted however is that as we sample 20% which is greater than 100 / 10 =  10% of the total population of the enron dataset (by the 10% condition) this sample is generalizable to the complete population.
@@ -45,18 +55,6 @@ Given these semantically significant embeddings, we ran PCA, an unsupervised dim
 These reduced embeddings were then passed into the k-means algorithm in order to cluster the documents into “topics.” The k-means algorithm is a centroid-based clustering method that partitions the data into K distinct, non-overlapping subgroups, or clusters. This model is straightforward and allows for quick retrieval of similar emails, although it requires a careful choice of 'k' will significantly impact the granularity of the clustering, requiring careful tuning to strike a balance between overgeneralization and fragmentation of topics.
 
 ### Model 2: TF-IDF+LDA
-
-#### Data Preprocessing
-
-In our project, preprocessing the Enron emails dataset was a fundamental step to ensure the data's integrity and usability for machine learning analysis. We started by loading the dataset into a pandas DataFrame, focusing primarily on the email body content. The initial stage of preprocessing involved a comprehensive cleaning process where we removed HTML tags, special characters, and unnecessary whitespace from the emails. This cleaning was crucial to eliminate noise and standardize the text. In addition to cleaning, we also normalized the text by converting it to lowercase, ensuring uniformity and preventing case sensitivity from affecting our analysis.
-
-After cleaning and normalizing the text, we addressed any missing values in the dataset. Handling these missing values was essential to maintain the integrity of our analysis. This step was followed by the tokenization of the email content, where we broke down the text into individual words. Tokenization is a key process in text mining as it prepares the data for feature extraction and modeling.
-
-The next significant step in our preprocessing was the removal of common English stop words. Eliminating these words allowed us to focus on the more meaningful content of the emails. Once the dataset was cleaned, normalized, tokenized, and freed of stop words, we applied the TF-IDF vectorization. This technique transformed the text into a numerical format, emphasizing the importance of specific terms within the corpus.
-
-This thorough preprocessing of the Enron emails dataset was a critical foundation for our project. It enabled us to effectively apply advanced techniques like TF-IDF and LDA, which were pivotal in clustering the emails and achieving our project's goal of creating an efficient email categorization system.
-
-#### Model Description
 
 Initially, we employed the TF-IDF technique, a widely-used feature extraction method in text mining, to convert our email dataset into a format suitable for machine learning. This method works by quantifying the importance of a word in a document relative to a collection of documents or corpus. The TF-IDF model was instantiated with parameters designed to optimize performance: it ignores terms appearing in more than 85% of documents (max_df=0.85), disregards terms that appear in less than two documents (min_df=2), and excludes common English stop words to focus on more meaningful terms. After fitting our model to the email contents, we obtained a sparse matrix of TF-IDF vectors, representing the significance of words across the emails.
 
