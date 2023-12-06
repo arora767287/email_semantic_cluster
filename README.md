@@ -88,10 +88,10 @@ BERTopic's final stage involves topic modeling, where it generates topics for ea
 Expected outcomes from BERTopic include enhanced topic discovery, reflecting BERT's capability to unearth more nuanced and contextually rich topics. The model also offers dynamic topic adjustment, where the number of topics is not pre-set but rather adapts to the data's inherent structure. The interpretability of the results is another key advantage, with the model providing clear and representative keywords for each topic, aiding in the intuitive understanding of the email clusters.
 
 **Distribution of Emails Among Topics**
-![BERTopic](https://github.com/arora767287/email_semantic_cluster/blob/main/Screenshot%202023-12-05%20at%2022.06.50.png)
+![BERTopic](https://github.com/arora767287/email_semantic_cluster/main/Screenshot%202023-12-05%20at%2022.06.50.png)
 
 **Visualization of Topics Clustered**
-![m3](https://github.com/arora767287/email_semantic_cluster/blob/main/Screenshot%202023-12-05%20at%2022.21.23.png)
+![m3](https://github.com/arora767287/email_semantic_cluster/main/Screenshot%202023-12-05%20at%2022.21.23.png)
 
 
 ## Results and Discussion
