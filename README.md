@@ -43,8 +43,6 @@ This thorough preprocessing of the Enron emails dataset was a critical foundatio
 
 ## Methods
 
-In this midterm report, we have implemented and compared two distinct models designed to organize emails into coherent clusters, facilitating easier navigation and management for users based on their topical preferences.
-
 ### Model 1: Doc2Vec+K-means
 
 Given the raw text data from each of the emails of the processed Enron dataset, we decided to sample 20% of the total emails due to computational complexity related to Doc2Vec. Note one thing that should be mentioned is that this sampling is different from Model 2's (which sampled 80% of the total emails). The reason for this was that we ran into issues related to training Doc2Vec taking far too long to train to convergence if we used all the emails. One thing that should be noted however is that as we sample 20% which is greater than 100 / 10 =  10% of the total population of the enron dataset (by the 10% condition) this sample is generalizable to the complete population.
@@ -81,7 +79,13 @@ Finally, to visualize the results of the LDA model, we transformed the topic dis
 
 ![LDA](https://github.com/arora767287/email_semantic_cluster/assets/82481744/dd29c01d-ed74-435f-91d0-ce6e9f70e1ce)
 
+### Model 3: BERTopic+UMap+HDBSCAN
 
+BERTopic starts by preprocessing the emails, where less aggressive cleaning is applied compared to earlier models, preserving the contextual nuances essential for BERT's analysis. Feature extraction is then conducted using BERT embeddings, transforming the emails into a high-dimensional vector space that captures the intricate contextual relationships between words. To manage this complexity, a dimensionality reduction step follows, typically employing UMAP (Uniform Manifold Approximation and Projection). This technique is chosen for its ability to maintain the data's intrinsic structure while condensing the information. The subsequent clustering phase employs HDBSCAN (Hierarchical Density-Based Spatial Clustering of Applications with Noise), an algorithm adept at identifying clusters within varied density data, fitting the diverse nature of email content. This step is crucial in segmenting the data into coherent groups.
+
+BERTopic's final stage involves topic modeling, where it generates topics for each cluster. These topics are not just arbitrary labels but are composed of a collection of keywords that concisely summarize the essence of the emails in each cluster to provide an intuitive understanding of the content.
+
+Expected outcomes from BERTopic include enhanced topic discovery, reflecting BERT's capability to unearth more nuanced and contextually rich topics. The model also offers dynamic topic adjustment, where the number of topics is not pre-set but rather adapts to the data's inherent structure. The interpretability of the results is another key advantage, with the model providing clear and representative keywords for each topic, aiding in the intuitive understanding of the email clusters.
 
 ## Results and Discussion
 
@@ -98,7 +102,10 @@ Davies-Bouldin Index: 0.3863525829481374
 
 Calinski-Harabasz Index: 1630166.5380492713
 
+Model 3: BERTopic+UMAP+HDBSCAN
 
+Davies-Bouldin Score: 5.7172560336925615
+Calinski-Harabasz Score: 1519.323644577111
 
 <img width="586" alt="image" src="https://github.com/arora767287/email_semantic_cluster/assets/44822455/3f736ac0-4752-4bad-b16d-dbd6d3386464">
 
@@ -115,23 +122,19 @@ Calinski-Harabasz Index: 1630166.5380492713
 
 ![CHI](https://github.com/arora767287/email_semantic_cluster/assets/82481744/7caa90e0-b5f5-46eb-9d1c-4684b8b143af)
 
-
 For the model 1 pipeline, we were tasked with finding the best number of clusters to evaluate our model upon. As such, we plotted an elbow curve across k=2 to k=50 (inclusive) used as the number of clusters we ran KMeans on the output of our PCA for. The elbow curve plotted above shows that the best value for the number of clusters occurs at k=9, where the plot of within cluster squared sums reaches a point after which decreases in the WCSS (a metric of the variance within the points of each cluster) are not substantial for increases in the number of clusters. Using this clustering of k=9 clusters, the Davies-Bouldin Index calculated is 6.04, which means that the average distance between document representations in each cluster was greater than the distance between the different identified 9 “clusters” or topics. This presents a significant amount of variance within each grouping of emails, indicative of poor separation boundaries between the emails.
-
-Upon deeper analysis with our model 2 pipeline, the Davies-Bouldin Index is 0.39, which showcases better clustering performance. This lower index indicates improved separation between clusters compared to model 1. Although caution is warranted in direct comparison due to the different scales of Davies-Bouldin Index values, the model displays more distinct topics. 
-
+Upon deeper analysis with our model 2 pipeline, the Davies-Bouldin Index is 0.39, which showcases better clustering performance. This lower index indicates improved separation between clusters compared to model 1. Although caution is warranted in direct comparison due to the different scales of Davies-Bouldin Index values, the model displays more distinct topics.
 In addition, the Calinski Harabasz index for the model 1 pipeline was 1479.23, which is a ratio of the between cluster sum of squares to the within cluster sum of squares, with larger indices being significantly better, presenting the k=9 clustering as a good candidate. The Calinski-Harabasz Index for model 2 yields a score of 1,630,166.54. This substantial improvement over model 1's index underscores the effectiveness of our model 2 approach, suggesting better-defined clusters and enhanced separation between them.
-
-
-# Next Steps
-Going forward we hope to do one more model pipeline for topic modeling on Emails. In addition, we hope to broaden the metrics we use to include the topic coherence score to gain additional valuable insight into the clusters we’re creating. One stretch goal we have for the final submission is to use investigative techniques to determine what the model pipelines’ clusters topics are and whether or not they truly represent something meaningful that a user would want to see.
+The Calinski-Harabasz score was 1479.23 for model 1 and was 1,630,166.54 for model 2. Our score of 1519.32 in model 3 indicates that the points in each cluster are closer together than model 1, but are farther apart than model 2. In addition, model 2 performs better with regards to the spacing of each cluster to other clusters, which is also accounted for in the Calinski Harabasz score. Therefore, as per this metric, model 2 outperforms model 1 and model 3.
+Davies-Bouldin illustrates the average similarity of a cluster to other clusters. The Davies-Bouldin score was 6.04 for model 1 and 0.39 for model 2. Our score of 5.71 for this model indicates the model had clusters that were on average less similar to each other than when we ran the scoring for model 1, but more similar to each other than when we ran the scoring for model 2. Therefore, as per this metric, model 2 outperforms model 1 and model 3. 
+As per our two metrics, we conclude that model 2 is the best with regards to intra and inter-cluster similarity.  
 
 # Contribution Table For Proposal
 | Member | Job | Description |
 | --- | --- | --- |
-| Katherine & Samarth | Model 2 | Preprocessing, Creation, Training, Metrics and Analysis of Model 2 |
-| Tanush, Nitya | Model 1 | Preprocessing, Creation, Training, Metrics and Analysis of Model 1 |
-| Katherine & Ajay | Visualization | Visualizations of Data and Models |
+| Tanush, Nitya & Samarth | Model 3 | Preprocessing, Creation, Training, Metrics and Analysis of Model 3 |
+| Tanush | Visualization | Visualizations of Data and Models |
+| Ajay, Nitya & Katherine | Presentation & Video | Slides and Video Creation
 | All | GitHub Pages | Making and formatting of GitHub pages website |
 
 [Gantt Chart](https://docs.google.com/spreadsheets/d/1ZUl8Xywp4VTTNtC-8Wq8ZxpYnzXYNJLe/edit?usp=sharing&ouid=101698207149759013919&rtpof=true&sd=true)
