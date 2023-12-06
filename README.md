@@ -89,6 +89,10 @@ Expected outcomes from BERTopic include enhanced topic discovery, reflecting BER
 
 ![BERTopic](https://github.com/arora767287/email_semantic_cluster/blob/main/Screenshot%202023-12-05%20at%2022.06.50.png)
 
+### Visualization of Topic Clusters 
+![m3](https://github.com/arora767287/email_semantic_cluster/blob/main/Screenshot%202023-12-05%20at%2022.21.23.png)
+
+
 ## Results and Discussion
 
 Model 1: Doc2Vec+K-means
